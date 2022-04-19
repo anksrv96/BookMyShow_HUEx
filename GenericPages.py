@@ -1,8 +1,7 @@
-import GenericFunctionalities
+import csv
 
 
 class GenericPages:
-    gf = GenericFunctionalities.GenericFunctionalities()
 
     # Displays home screen and returns user input
     def display_home_screen(self):
@@ -26,12 +25,6 @@ class GenericPages:
 
     def display_login_screen(self):
         print('******Welcome to BookMyShow*******')
-        role = self.gf.perform_login()
-        match role:
-            case 'admin':
-                self.display_admin_home()
-            case 'user':
-                self.display_user_home()
 
     def display_register_new_user_page(self):
         pass
@@ -42,8 +35,30 @@ class GenericPages:
         print('2. Edit movie info')
         print('3. Delete movies')
         print('4. Logout')
-        self.gf.perform_admin_action()
+
 
 
     def display_user_home(self):
         pass
+
+    def display_add_new_movie_page(self):
+        print('******Welcome Admin*******')
+
+    def display_edit_movie_page(self):
+        print('******Welcome Admin*******')
+        print('Select the movie that you want to edit...')
+        with open('movies.csv', 'r') as infile:
+            reader = csv.reader(infile, delimiter=',')
+            headers = next(reader)
+            counter = 0
+            for row in reader:
+                print(counter+1, '. ', row[0])
+                print(dict(zip(headers, row)))
+                counter = counter+1
+        infile.close()
+        print('0. Main menu')
+        return counter
+
+    def display_delete_movie_page(self):
+        print('******Welcome Admin*******')
+
