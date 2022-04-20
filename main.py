@@ -39,6 +39,20 @@ def perform_appropriate_admin_action(admin_choice):
             main()
 
 
+def perform_appropriate_user_action(response):
+    tickets_remaining = gf.fetch_and_display_movie_details(response)
+    gp.display_user_actions()
+    user_choice = gf.register_user_response_for_action_selection()
+    match user_choice:
+        case 1:
+            gp.display_book_ticket_screen(response)
+            gf.perform_ticket_sale(response)
+        case 2:
+            gp.display_cancel_ticket_screen(response)
+        case 3:
+            gp.display_user_rating_screen(response)
+
+
 def main():
     user_choice = gp.display_home_screen()
     user_role = ""
@@ -51,10 +65,17 @@ def main():
                 admin_choice = gf.register_admin_choice()
                 perform_appropriate_admin_action(admin_choice)
             elif user_role == 'user':
-                gp.display_user_home()
+                acceptable_response_range = gp.display_user_home()
+                response = gf.register_user_response_for_movie_selection(acceptable_response_range)
+                if response == 0:
+                    main()
+                else:
+                    perform_appropriate_user_action(response)
+
 
         case 2:
             gp.display_register_new_user_page()
+            gf.register_new_user()
         case 3:
             sys.exit("Terminating ! ! !")
 
