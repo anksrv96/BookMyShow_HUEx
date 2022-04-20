@@ -7,6 +7,7 @@ gp = GenericPages()
 gf = GenericFunctionalities()
 
 
+# process flow if logged in as an ADMIN
 def perform_appropriate_admin_action(admin_choice):
     match admin_choice:
         case 1:
@@ -39,6 +40,7 @@ def perform_appropriate_admin_action(admin_choice):
             main()
 
 
+# process flow if logged in as a USER
 def perform_appropriate_user_action(response):
     tickets_remaining = gf.fetch_and_display_movie_details(response)
     gp.display_user_actions()
@@ -47,6 +49,7 @@ def perform_appropriate_user_action(response):
         case 1:
             gp.display_book_ticket_screen(response)
             gf.perform_ticket_sale(response)
+            main()
         case 2:
             gp.display_cancel_ticket_screen(response)
         case 3:
@@ -72,10 +75,10 @@ def main():
                 else:
                     perform_appropriate_user_action(response)
 
-
         case 2:
             gp.display_register_new_user_page()
             gf.register_new_user()
+            main()
         case 3:
             sys.exit("Terminating ! ! !")
 

@@ -40,6 +40,7 @@ class GenericPages:
         print('3. Delete movies')
         print('4. Logout')
 
+    # displays user home and returns the number of valid responses
     @staticmethod
     def display_user_home():
         print('******Welcome User*******')
@@ -59,6 +60,7 @@ class GenericPages:
     def display_add_new_movie_page():
         print('******Welcome Admin*******')
 
+    # displays edt movie page and returns the number of valid responses
     @staticmethod
     def display_edit_movie_page():
         print('******Welcome Admin*******')
@@ -121,3 +123,6 @@ class GenericPages:
 
     def display_cancel_ticket_screen(self, response):
         pass
+
+    def display_user_rating_screen(self, response):
+        print('Yet to programme this branch')

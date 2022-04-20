@@ -46,16 +46,16 @@ class GenericFunctionalities:
         movie_details = []
         movie_details.append(input('Title: '))
         movie_details.append(input('Genre: '))
-        movie_details.append(input('Length: '))
+        movie_details.append(input('Length(in hours) : '))
         movie_details.append(input('Cast: '))
         movie_details.append(input('Director: '))
         movie_details.append(input('Admin Ratings: '))
         movie_details.append(input('Language: '))
-        movie_details.append(input('Timings: '))
+        movie_details.append(input('Timings(not mandatory): '))
         movie_details.append(input('Number of shows in a day: '))
-        movie_details.append(input('First show: '))
-        movie_details.append(input('Interval Time: '))
-        movie_details.append(input('Gap between shows: '))
+        movie_details.append(input('First show(like hh.mmAM): '))
+        movie_details.append(input('Interval Time(in mins): '))
+        movie_details.append(input('Gap between shows(in mins): '))
         movie_details.append(input('Capacity: '))
 
         # writing to csv
